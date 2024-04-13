@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// @media(prefers-color-scheme: light) {
+//   [data-color-mode=auto][data-light-theme*=dark] {
+//       color-scheme:light
+//   }
+// }
+
+@media (prefers-color-scheme: dark) {
+  * {
+    color-scheme: dark;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  @apply m-0 p-0;
+}
+
+.h-center {
+  @apply flex items-center;
+}
+
+.v-center {
+  @apply flex justify-center;
+}
+
+@layer base {
+  a,
+  button {
+    @apply transition-all duration-500 disabled:pointer-events-none;
+
+    &:not([data-unanimated]) {
+      @apply hover:opacity-80;
+    }
+  }
+
+  p {
+    @apply leading-normal mb-3 last:mb-0;
+  }
+
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  h6,
+  .h6 {
+    @apply font-bold mb-2;
+    line-height: 1.2;
+
+    /* &,
+    h1,
+    .h1 {
+    } */
+  }
+
+  h1,
+  .h1 {
+    @apply text-gray-900 dark:text-white font-extrabold mb-3.5;
+    font-size: calc(1.375rem + 1.4vw);
+    /* Sizes from bootstrap */
+  }
+
+  h2,
+  .h2 {
+    font-size: calc(1.325rem + 0.8vw);
+  }
+
+  h3,
+  .h3 {
+    font-size: calc(1.3rem + 0.5vw);
+  }
+
+  h4,
+  .h4 {
+    font-size: calc(1.275rem + 0.2vw);
+  }
+
+  h5,
+  .h5 {
+    @apply text-lg;
+  }
+
+  h6,
+  .h6 {
+    @apply text-base;
+  }
+
+  small,
+  .small {
+    @apply text-sm;
+  }
+}
+
+/* Search box at home page */
+@layer components {
+  .search-box {
+    @apply bg-slate-100 border-2 rounded-full v-center;
+
+    &:has(input:focus) {
+      @apply border-green-500;
+    }
+
+    &:not(:has(input:focus)) {
+      @apply border-slate-500;
+    }
+  }
+
+  .container {
+    @apply max-w-screen-2xl mx-auto w-full;
+  }
+}
+
+/* Wallpaper item for masonry */
+.wallpaper-item {
+  @apply h-fit relative transition-all overflow-hidden hover:drop-shadow;
+  // @apply border-2 border-transparent hover:border-slate-500;
+
+  &,
+  &-link,
+  img {
+    @apply rounded-2xl w-full;
+  }
+
+  &-link {
+    @apply block hover:brightness-75;
+  }
+
+  // &,
+  // &-image {
+  //   @apply w-full rounded-2xl;
+  // }
+
+  // &:hover &-image {
+  //   @apply blur-[2px];
+  // }
+
+  &-like {
+    @apply absolute top-2 right-2 rounded-full shadow p-2 h-center bg-slate-600;
+    color: red;
+    font-size: 1.24rem;
+  }
+
+  &-footer {
+    @apply absolute bottom-0 left-0 right-0 z-10 flex flex-wrap p-1.5 bg-slate-500/70 rounded-b-[inherit] scale-y-0 origin-bottom transition-all;
+  }
+
+  &:hover &-footer {
+    @apply scale-y-100;
+  }
+}
+
+.wallpapers-list-header {
+  @apply h-center justify-between flex-wrap gap-1 max-[480px]:flex-col max-w-screen-xl;
+}
+
+.masonry-col {
+  @apply flex flex-col gap-[inherit] py-1;
+}
