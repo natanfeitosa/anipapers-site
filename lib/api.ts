@@ -35,10 +35,10 @@ export class HttpClient {
       return [];
     }
 
-    return Object.entries(params).reduce(
-      (acc, [key, val]) => Object.assign(acc, { [key]: String(val) }),
-      {} as Record<string, string>
-    );
+    return Object.entries(params).reduce((acc, [key, val]) => {
+      if (val == undefined || val == null) return acc;
+      return Object.assign(acc, { [key]: String(val) });
+    }, {} as Record<string, string>);
   }
 
   private buildUrl(path: string, params?: RequestOptions["params"]) {
@@ -133,7 +133,7 @@ export class HttpClient {
     if (!this.isValidUrl(url)) {
       throw new Error(`Invalid URL provided`);
     }
-    console.log(JSON.stringify({ url, options }, null, 2));
+    // console.log(JSON.stringify({ url, options }, null, 2));
 
     const res = await fetch(url, options);
 
