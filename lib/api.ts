@@ -13,7 +13,10 @@ const globalOptions: Omit<RequestOptions, "method"> = {
 
 export class HttpClient {
   constructor(
-    private baseURL: string | URL = new URL("/api/", process.env.NEXT_PUBLIC_SITE_URL!),
+    private baseURL: string | URL = new URL(
+      "/api/",
+      process.env.NEXT_PUBLIC_SITE_URL!
+    ),
     private defaultOptions: Omit<RequestOptions, "method"> = {}
   ) {}
 
@@ -50,11 +53,13 @@ export class HttpClient {
       url = new URL(url.trim());
     }
 
+    url = new URL(path, url);
+
     if (params) {
       url.search = new URLSearchParams(this.normalizeParams(params)).toString();
     }
 
-    return new URL(path, url).toString();
+    return url.toString();
   }
 
   private mergeHeaders(...headers: HeadersInit[]): Headers {
@@ -128,7 +133,7 @@ export class HttpClient {
     if (!this.isValidUrl(url)) {
       throw new Error(`Invalid URL provided`);
     }
-    // console.log(JSON.stringify({ url, options }, null, 2));
+    console.log(JSON.stringify({ url, options }, null, 2));
 
     const res = await fetch(url, options);
 
