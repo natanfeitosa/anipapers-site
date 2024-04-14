@@ -25,7 +25,7 @@ const nextConfig = {
     if (isProd()) {
       config.plugins.push(
         new PurgeCSSPlugin({
-          paths: glob.sync(`${path.resolve(`./src`)}/**/*`, { nodir: true }),
+          paths: glob.sync(`${path.resolve(`./`)}/**/*.{tsx,jsx}`, { nodir: true }),
           extractors: [
             { extractor: purgecssFromTsx(), extensions: ["tsx", "jsx"] },
           ],
