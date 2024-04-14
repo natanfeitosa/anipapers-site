@@ -14,15 +14,7 @@ export default function DefaultLayout({
 }) {
   return (
     <>
-      <header
-        className={[
-          "p-4 flex max-[440px]:flex-wrap justify-center container gap-y-4 gap-x-3 bg-slate-200 dark:bg-slate-900",
-          "shadow shadow-slate-400 dark:shadow-slate-600 max-[440px]:flex-col min-[440px]:items-center min-[440px]:justify-between",
-          // "bg-green-700",
-        ]
-          .filter(Boolean)
-          .join(" ")}
-      >
+      <header className="p-4 flex max-[440px]:flex-wrap justify-center container gap-y-4 gap-x-3 bg-slate-200 dark:bg-slate-900 shadow shadow-slate-400 dark:shadow-slate-600 max-[440px]:flex-col min-[440px]:items-center min-[440px]:justify-between">
         <Link
           href="/"
           className="block justify-self-start"
