@@ -196,16 +196,16 @@ export class HttpClient {
   }
 }
 
-let api = new HttpClient('http://127.0.0.1:8000/v1/')
-// let api = new HttpClient();
+// let api = new HttpClient('http://127.0.0.1:8000/v1/')
+let api = new HttpClient();
 
-// if (typeof window === "undefined") {
-//   api = new HttpClient(process.env.RAPID_API_BASE_URL, {
-//     headers: {
-//       "X-RapidAPI-Key": process.env.RAPID_API_KEY!,
-//       "X-RapidAPI-Host": new URL(process.env.RAPID_API_BASE_URL!).host,
-//     },
-//   });
-// }
+if (typeof window === "undefined") {
+  api = new HttpClient(process.env.RAPID_API_BASE_URL, {
+    headers: {
+      "X-RapidAPI-Key": process.env.RAPID_API_KEY!,
+      "X-RapidAPI-Host": new URL(process.env.RAPID_API_BASE_URL!).host,
+    },
+  });
+}
 
 export default api;
