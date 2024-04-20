@@ -10,7 +10,7 @@ export const metadata = defineMetadata({
     default: "Anipapers",
     template: "%s | Anipapers",
   },
-  description: "Sua plataforma com os melhores papéis de paredes de animes",
+  description: "Anipapers, sua plataforma de papéis de parede. Encontre os melhores papéis de parede de anime que você jamais viu.",
   applicationName: "Anipapers",
   openGraph: {
     type: "website",

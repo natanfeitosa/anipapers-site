@@ -1,16 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FaSearch } from "react-icons/fa";
-import { Metadata } from "next";
 import { banners } from "@/lib/constants";
+import { defineMetadata } from '@/helpers';
 import Featured from "./components/Featured";
 
-export const metadata: Metadata = {
-  title: "Home",
-  openGraph: {
-    title: "Home",
-  },
-};
+export const metadata = defineMetadata({
+  title: {
+    absolute: 'Anipapers, sua plataforma de papéis de parede.'
+  }
+})
 
 export default function Home() {
   return (
